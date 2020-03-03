@@ -7,6 +7,7 @@
  *
  */
 
+
 /* jshint esversion: 6 */
 const Ocelot = require('ocelot-pjax');
 let ocelot = new Ocelot.Pjax();
@@ -25,15 +26,15 @@ const ocelotCallback = () => {
         fileName = window.location.pathname.substr(1, window.location.pathname.length - 1),
         featuredImg = document.getElementById('featured');
 
-    if (bodyClassName === '') {
+    if(bodyClassName === '') {
         bodyClassName = 'homepage';
         fileName = 'homepage';
     }
     document.body.className = bodyClassName;
 
-    let titlePrefix = "Declan Tyson | ";
-    if (bodyClassName === 'homepage') {
-        titlePrefix = "";
+    let titlePrefix = 'Declan Tyson | ';
+    if(bodyClassName === 'homepage') {
+        titlePrefix = '';
     }
     document.title = titlePrefix + pageTitle.innerHTML;
     pageTitleH1.innerHTML = pageTitle.innerHTML;
@@ -50,25 +51,27 @@ const ocelotCallback = () => {
     featuredImg.onload = () => {
         featuredImg.style.opacity = 1;
 
-        let offset = header.clientHeight + navigation.clientHeight + 20;
-        if (navigator.userAgent.match(/Android/g)) offset += 55;
-        if (navigator.userAgent.match(/iPhone/g)) offset += 95;
+        let offset = (header.clientHeight + navigation.clientHeight + 20);
+        if(navigator.userAgent.match(/Android/g)) offset += 55;
+        if(navigator.userAgent.match(/iPhone/g)) offset += 95;
 
         header.className = 'in';
-        header.style.marginTop = "calc(100vh - " + offset + "px)";
+        header.style.marginTop = 'calc(100vh - ' + offset + 'px)';
 
         let scrollPoint = document.querySelector('#total').clientHeight / 4;
 
-        if (window.location.pathname === "/") {} else if (document.querySelector('#total').scrollTop <= scrollPoint) {
+        if (window.location.pathname === '/') {
+
+        } else if (document.querySelector('#total').scrollTop <= scrollPoint) {
             //scrollPage(500, scrollPoint);
-            document.querySelector('.drop').className = "drop in";
+            document.querySelector('.drop').className = 'drop in';
         }
     };
 
-    if (window.innerWidth < 480) {
-        fileName = "mobile/" + fileName;
+    if(window.innerWidth < 480) {
+        fileName = 'mobile/' + fileName;
     }
-    featuredImg.setAttribute("src", "/assets/" + fileName + ".png");
+    featuredImg.setAttribute('src', '/assets/' + fileName + '.png');
 };
 
 ocelot.prePopCallback = () => {
@@ -85,21 +88,21 @@ ocelot.all({
 
 window.onload = () => {
     ocelotCallback();
-    if (typeof ocelot.events[window.location.pathname] !== "undefined") ocelot.events[window.location.pathname]();
+    if(typeof ocelot.events[window.location.pathname] !== 'undefined') ocelot.events[window.location.pathname]();
 };
 
 document.querySelector('#total').onscroll = () => {
     let scrollPoint = document.querySelector('#total').clientHeight / 4;
-    if (document.querySelector('#total').scrollTop <= scrollPoint + 10) {
-        document.querySelector('.drop').className = "drop in";
+    if(document.querySelector('#total').scrollTop <= scrollPoint + 10) {
+        document.querySelector('.drop').className = 'drop in';
     } else {
-        document.querySelector('.drop').className = "drop";
+        document.querySelector('.drop').className = 'drop';
     }
 };
 
 document.querySelector('.drop').onclick = () => {
     let scrollPoint = document.querySelector('#total').clientHeight / 4;
-    if (document.body.clientWidth < 640) {
+    if(document.body.clientWidth < 640) {
         scrollPoint = false;
     }
 
@@ -108,13 +111,13 @@ document.querySelector('.drop').onclick = () => {
 
 window.onresize = () => {
     let fileName = window.location.pathname.substr(1, window.location.pathname.length - 1);
-    if (fileName === '') fileName = 'homepage';
+    if(fileName === '') fileName = 'homepage';
 
-    if (window.innerWidth < 480) {
-        fileName = "mobile/" + fileName;
+    if(window.innerWidth < 480) {
+        fileName = 'mobile/' + fileName;
     }
 
-    document.querySelector('#featured').setAttribute("src", "/assets/" + fileName + ".png");
+    document.querySelector('#featured').setAttribute('src', '/assets/' + fileName + '.png');
 };
 
 const scrollPage = (scrollDuration, stopPoint = false) => {
@@ -122,15 +125,14 @@ const scrollPage = (scrollDuration, stopPoint = false) => {
         header = document.querySelector('header'),
         bottom = view.scrollHeight - view.clientHeight;
 
-    if (!stopPoint) stopPoint = bottom < header.offsetTop - 40 ? bottom : header.offsetTop - 40;
+    if(!stopPoint) stopPoint = bottom < header.offsetTop-40 ? bottom : header.offsetTop-40;
 
     let scrollStep = stopPoint / (scrollDuration / 15),
         scrollInterval = setInterval(() => {
-        if (view.scrollTop < stopPoint) {
-            view.scrollTop += scrollStep;
-        } else {
-            clearInterval(scrollInterval);
-        }
-    }, 15);
+            if (view.scrollTop < stopPoint) {
+                view.scrollTop += scrollStep;
+            } else {
+                clearInterval(scrollInterval);
+            }
+        },15);
 };
-//# sourceMappingURL=main.js.map

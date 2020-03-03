@@ -1,0 +1,28 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  right: 50%;
+  display: none;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: block;
+
+      &:nth-of-type(3n + 1) { background-color: @secondary-colour; }
+      &:nth-of-type(3n + 2) { background-color: @tertiary-colour; }
+      &:nth-of-type(3n) { background-color: @quadiary-colour; }
+
+      li {
+        padding: 30px;
+        width: 0;
+        height: 0;
+        text-indent: -9999px;
+        margin: 0;
+      }
+    }
+  }
+}
