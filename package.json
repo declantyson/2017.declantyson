@@ -40,6 +40,6 @@
     "markdown-it": "^8.3.1",
     "ocelot-pjax": "^0.3.4",
     "penknife": "0.0.3",
-    "pug": "^2.0.0-beta11"
+    "pug": "^3.0.1"
   }
 }
