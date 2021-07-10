@@ -1,0 +1,71 @@
+/*
+*
+*	declantyson/2017/blogalongabond
+*	Declan Tyson
+*	v0.1.0
+*	25/04/2017
+*
+*/
+
+#ocelot-content {
+	.blogs-bond {
+		border-top: solid 1px #efefef;
+		margin-top: 30px;
+		a {
+			display: inline-block;
+			width: 31%;
+			margin: 10px 1%;
+			position: relative;
+			@media screen and (max-width: 960px) {
+				width: 48%;
+			}
+			@media screen and (max-width: 640px) {
+				width: 98%;
+			}
+			img {
+				width: 100%;
+				filter: brightness(40%);
+			}
+			.thumb-content {
+				position: absolute;
+				top: 50%;
+				@include transform(translateY(-50%));
+				text-align: center;
+				width: 90%;
+				padding: 0 5%;
+				color: #ffffff;
+				h3 {
+					margin: 0;
+				}
+				span {
+					font-weight: lighter;
+				}
+			}
+			&:after {
+				margin-top: 10px;
+				bottom: 20px;
+				border-color: #ffffff;
+			}
+			&:hover {
+				&:after {
+					width: 120px;
+				}
+			}
+		}
+	}
+}
+
+.blogalongabond-the-day-i-met-james-bond {
+	#featured {
+		object-position: top;
+	}
+}
+
+.blogalongabond-casino-royale {
+	.content {
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+}

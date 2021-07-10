@@ -1,0 +1,72 @@
+/*
+*
+*	declantyson/2017/home
+*	Declan Tyson
+*	v0.1.2
+*	03/08/2017
+*
+*/
+
+$navHeight: 30px;
+
+.navigation {
+	margin-top: -$contentPadding;
+	border-bottom: solid 1px #cdcdcd;
+	position: relative;
+	ul {
+		padding: 0;
+		margin: 0 0 0 -20px;
+		a {
+			color: #000000;
+			text-decoration: none;
+		}
+		li {
+			@include transition(background-color 0.15s ease-out);
+			padding: $contentPadding 20px;
+			margin: 0;
+			display: inline-block;
+			list-style-type: none;
+			line-height: $navHeight;
+			font-weight: 600;
+			position: relative;
+			@media screen and (max-width: 640px) {
+				font-size: 14px;
+				padding: 15px;
+				line-height: $navHeight * 0.66;
+			}
+		}
+	}
+}
+
+.drop {
+	height: 70px;
+	width: 70px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	display: none;
+	cursor: pointer;
+	&:after {
+		content: ' ';
+		height: 100%;
+		width: 100%;
+		background-image: url('/assets/drop.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: $navHeight - 10px;
+		display: block;
+		animation: arrowScroll 1s infinite;
+	}
+	&.in {
+		display: block;
+		@media screen and (max-width: 640px) {
+			display: none;
+		}
+	}
+}
+
+body.homepage {
+	.drop.in {
+		display: none;
+	}
+}

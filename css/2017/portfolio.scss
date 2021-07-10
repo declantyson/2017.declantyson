@@ -1,0 +1,98 @@
+/*
+*
+*	declantyson/2017/portfolio
+*	Declan Tyson
+*	v0.2.1
+*	12/01/2018
+*
+*/
+
+body.portfolio {
+	#fancy-loading-transition {
+		display: none;
+	}
+
+	.navigation {
+		border-color: #333;
+	}
+
+	header {
+		margin: 0 !important;
+		h1, p {
+			display: none;
+		}
+	}
+
+	.drop {
+		display: none;
+	}
+
+	#container {
+		min-height: 100%;
+	}
+
+	.work {
+		.item {
+            clear: both;
+            margin-top: 40px;
+            h2, h4 {
+                text-align: center;
+            }
+            .snapshot {
+                float: left;
+                text-align: center;
+                width: 31%;
+                margin: 10px 1%;
+                @media screen and (max-width: 960px) {
+                    width: 48%;
+                }
+                @media screen and (max-width: 640px) {
+                    width: 98%;
+                }
+                img {
+                  width: 100%;
+                }
+            }
+            .info {
+                float: right;
+                width: 64%;
+                margin: 10px 1%;
+                @media screen and (max-width: 960px) {
+                    width: 48%;
+                }
+                @media screen and (max-width: 640px) {
+                    width: 98%;
+                }
+            }
+            &:nth-of-type(even) {
+                .info {
+                    float: left;
+                }
+                .snapshot {
+                    float: right;
+                }
+            }
+		}
+	}
+
+    .playground {
+        .item {
+            vertical-align: top;
+            display: inline-block;
+            width: 31%;
+            margin: 10px 1%;
+            @media screen and (max-width: 960px) {
+                width: 48%;
+            }
+            @media screen and (max-width: 640px) {
+                width: 98%;
+            }
+            h2 {
+                text-align: center;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

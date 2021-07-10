@@ -3,15 +3,15 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch : {
             scripts: {
-                files: ['scripts/src/*.js', '!**/*.min.js'],
+                files: ['scripts/2020/*.js', '!**/*.min.js'],
                 tasks: ['jshint', 'babel', 'browserify'],
                 options: {
 
                 }
             },
             styles : {
-                files: ['css/src/*.scss'],
-                tasks: ['sass', 'cssmin'],
+                files: ['css/2020/*.less'],
+                tasks: ['less', 'cssmin'],
                 options: {
 
                 }
@@ -30,9 +30,25 @@ module.exports = function(grunt) {
 
                 },
                 files : {
-                    'css/styles.css': 'css/src/base.scss'
+                    'css/styles.css': 'css/2020/base.scss'
                 }
             }
+        },
+        less: {
+            default: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'css/2020',
+                        src: 'base.less',
+                        dest: 'css',
+                        ext: '.css',
+                        rename:function(dest){
+                            return dest + "/styles.css";
+                        }
+                    }
+                ]
+            },
         },
         cssmin : {
             options : {
@@ -50,7 +66,7 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: [
-                'scripts/src/*.js',
+                'scripts/2020/*.js',
                 'tests/*.js'
             ]
         },
@@ -67,9 +83,9 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd:  'scripts/src/',
+                    cwd:  'scripts/2020/',
                     src: ['*.js'],
-                    dest: 'scripts/src/babel/',
+                    dest: 'scripts/2020/babel/',
                     ext: '.js'
                 }]
             }
@@ -92,7 +108,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'scripts/<%= pkg.name %>.js' : 'scripts/src/babel/*.js'
+                    'scripts/<%= pkg.name %>.js' : 'scripts/2020/babel/*.js'
                 }
             }
         },
@@ -110,7 +126,7 @@ module.exports = function(grunt) {
                 mangle: true
             },
             build: {
-                src: ['scripts/*.js', '!scripts/src/*.js', '!scripts/lib/*.js', '!scripts/babel/*.js'],
+                src: ['scripts/*.js', '!scripts/2020/*.js', '!scripts/lib/*.js', '!scripts/babel/*.js'],
                 dest: 'scripts/<%= pkg.name %>.min.js'
             }
         },
@@ -126,7 +142,7 @@ module.exports = function(grunt) {
                     ],
                     'assets/mobile/blog': [
                         'assets/blog/*.png',
-                        '!assets/blog/update-2017.png',
+                        '!assets/blog/update-2020.png',
                         '!assets/blog/game-of-thrones-s7.png'
                     ],
                     'assets/mobile/blogalongabond': [
@@ -156,7 +172,7 @@ module.exports = function(grunt) {
                         'assets/blogalongabond.png'
                     ],
                     'assets/mobile/blog': [
-                        'assets/blog/update-2017.png',
+                        'assets/blog/update-2020.png',
                         'assets/blog/game-of-thrones-s7.png'
                     ]
                 }
@@ -181,6 +197,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jasmine');

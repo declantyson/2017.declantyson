@@ -1,0 +1,59 @@
+/*
+*
+*	declantyson/2017/fancy-loading-transition
+*	Declan Tyson
+*	v0.1.0
+*	04/04/2017
+*
+*/
+
+#fancy-loading-transition {
+    width: 60px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    @include transform(translateY(-50%) translateX(-50%));
+    span {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        background-color: #fff;
+        animation: bounce 1.5s infinite;
+    }
+}
+
+$loops: 3;
+
+@while $loops > 0 {
+    #fancy-loading-transition span:nth-of-type(#{$loops}) {
+        animation-delay: 0.15s * $loops;
+    }
+    $loops: $loops - 1;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    12% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    18% {
+        transform: translateY(-10px) rotate(90deg);
+    }
+
+    24% {
+        transform: translateY(-10px) rotate(135deg);
+    }
+
+    30% {
+        transform: translateY(-5px) rotate(180deg);
+    }
+
+    36%, 48%, 100% {
+        transform: translateY(0) rotate(180deg);
+    }
+}

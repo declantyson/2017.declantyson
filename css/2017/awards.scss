@@ -1,0 +1,156 @@
+/*
+*
+*	declantyson/2017/awards
+*	Declan Tyson
+*	v0.1.6
+*	03/08/2017
+*
+*/
+
+$awards: #dedede;
+$awardsBorder: #666666;
+//$awards: #afa922;
+
+body[class^="awards"] {
+    #fancy-loading-transition {
+        display: none;
+    }
+
+    .navigation {
+        border-color: #333;
+    }
+
+    header {
+        margin: 0 !important;
+        h1, p {
+            display: none;
+        }
+    }
+
+    .drop {
+        display: none;
+    }
+
+    #container {
+        background-color: $awards;
+        min-height: 100%;
+
+        #ocelot-content {
+            padding: 0;
+        }
+
+        .awards-content {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            a {
+                &.award-splash {
+                    padding: 10px 0;
+                    text-align: center;
+                    flex: 1;
+                    display: block;
+                    margin: 0 auto;
+                    position: relative;
+                    &:after {
+                        display: none;
+                    }
+                    img {
+                        filter: brightness(0.7);
+                        opacity: 1;
+                        transform: scale(1);
+                        transition: all 0.25s ease-out;
+                        @media screen and (max-width: 1200px) {
+                            width: 480px;
+                        }
+                        @media screen and (max-width: 1024px) {
+                            width: 400px;
+                        }
+                        @media screen and (max-width: 860px) {
+                            width: 320px;
+                        }
+                    }
+                    &:hover {
+                        img {
+                            filter: brightness(0.9);
+                            opacity: 0.9;
+                            transform: scale(1.1);
+                        }
+                    }
+                    h3 {
+                        position: absolute;
+                        top: 50%;
+                        width: 100%;
+                        color: #ffffff;
+                        text-align: center;
+                        margin: 0;
+                        font-size: 48px;
+                    }
+                }
+            }
+        }
+
+        .awards-sidebar {
+            padding: 60px 0;
+            width: 150px;
+            float: left;
+            border-right: solid 1px $awardsBorder;
+            a {
+                width: 100%;
+                text-align: center;
+                &:after {
+                    @include transform(translateX(-50%) translateY(-10px));
+                }
+                &:hover {
+                    &:after {
+                        width: 40px;
+                    }
+                }
+            }
+
+            @media screen and (max-width:640px) {
+                float: none;
+                width: 100%;
+                padding: 20px 0;
+                border-right: none;
+                border-bottom: solid 1px $awardsBorder;
+                a {
+                    width: auto;
+                    display: inline-block;
+                    padding: 0 20px;
+                    h3 {
+                        display: inherit;
+                    }
+                }
+            }
+        }
+
+        .awards-copy {
+            width: calc(100% - 220px);
+            padding: 60px 20px 60px 40px;
+            float: right;
+            color: #333333;
+            img {
+                width: 100%;
+            }
+            @media screen and (max-width:640px) {
+                width: calc(100% - 40px);
+                padding: 20px;
+                float: none;
+            }
+        }
+
+        a {
+            color: #000000;
+            &:after {
+                border-color: #000000;
+            }
+        }
+    }
+}
+
+.awards-2016,
+.awards-2012 {
+    h1 {
+        font-family: 'Chiller', 'Marker Felt', sans-serif;
+    }
+}

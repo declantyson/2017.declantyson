@@ -4,3 +4,4 @@ node_modules
 data/data_archive.sql
 .DS_Store
 *.DS_Store
+scripts/**/babel/*
